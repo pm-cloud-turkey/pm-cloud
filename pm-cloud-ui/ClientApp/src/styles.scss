@@ -1,0 +1,128 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/dhtmlx-gantt/codebase/dhtmlxgantt.css";
+@import "../node_modules/primeflex/primeflex";
+@import "~bootstrap/scss/bootstrap.scss";
+
+
+.layout-container .topbar { background: #192773 !important; height: 50px; }
+.drklogo { margin-top: 90px; }
+.drklogo p { font-size: 13px; color: #acadaf; }
+.RebemberPass { text-align: left; font-size: 13px; color: #757575; text-decoration: underline; }
+.RebemberPass:hover { color: #192773; cursor: pointer; }
+.login-panel { text-align: left; width: 350px; min-height: 440px; padding: 50px 20px; margin-top: 70px; margin-left: 50px; }
+.login-panel .ui-g .ui-g-6 label { font-size: 13px; padding-top: 10px; color: #757575; }
+.login-panel .ui-g .ui-g-12 { padding: 25px 0px; }
+.login-panel .ui-g .ui-g-6 { padding: 0; }
+.login-panel .ui-button { margin-top: 20px; }
+.login-body .card { box-shadow: none; }
+.login-body { background: url("assets/layout/images/login/LoginMainBg.jpg") top right no-repeat; background-size: cover; height: auto; overflow: hidden; }
+
+.layout-container .layout-breadcrumb { background-color: #ffffff; border-bottom: 1px solid #d6d5d5; min-height: 42px; box-shadow: none; }
+.layout-container .layout-menu .profile-menu { border-bottom: 1px solid #d6d5d5; overflow: hidden; }
+.layout-container .layout-menu .profile { box-shadow: none; }
+.layout-container .layout-menu { box-shadow: none; border-right: 1px solid #d6d5d5; }
+
+.splash-screen { background-color: #192773; }
+
+.exception-body.notfound-page .exception-type { background-color: #192773; }
+.landing-wrapper #pricing .pricing-box.pricing-basic .pricing-header { background-color: #192773; }
+.landing-wrapper #pricing .pricing-box.pricing-basic i { color: #192773; }
+
+.layout-container .layout-main { padding: 50px 0 0 0; }
+.layout-container .topbar .topbar-left { padding: 13px 20px 5px 50px; height: 50px; background-color: #192773; box-shadow: none; }
+.layout-container .topbar .topbar-right { padding: 7px; }
+.layout-container .layout-menu, .layout-container .layout-rightpanel { top: 50px; }
+.layout-container .topbar { background-color: #47528f; box-shadow: none; }
+.layout-container .topbar-items > li .topbar-icon { font-size: 20px; }
+.layout-container .topbar-items { padding-top: 10px; }
+.layout-container .topbar .topbar-right .topbar-items .search-item input { top: -6px; }
+.layout-container .topbar .topbar-right .topbar-items .search-item label { top: 1px; left: 0; }
+.layout-container .topbar .topbar-right .topbar-items .search-item input:focus ~ label { top: 0px; left: 3px; }
+.layout-container .topbar-items > li > ul { top: 33px; }
+.layout-container .topbar .topbar-right #rightpanel-menu-button { margin-top: 1px; }
+.layout-container.menu-layout-horizontal .layout-menu { top: 50px; }
+.layout-container .topbar .topbar-left #menu-button { color: #e7f7f4; display: block; position: absolute; vertical-align: middle; left: 10px; top: 0px; -moz-transition: all 0.3s; -o-transition: all 0.3s; -webkit-transition: all 0.3s; transition: all 0.3s; padding: 15px 6px 10px 6px; }
+.layout-container .topbar .topbar-left #menu-button:hover { background: #84d7c7 }
+.layout-container .topbar .topbar-left #menu-button i { font-family: "Material Icons"; font-weight: normal; font-style: normal; font-size: 20px; display: inline-block; width: 1em; height: 1em; line-height: 1; text-transform: none; letter-spacing: normal; word-wrap: normal; white-space: nowrap; direction: ltr; text-indent: 0; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; -moz-osx-font-smoothing: grayscale; font-feature-settings: "liga"; -moz-transition: all 0.3s; -o-transition: all 0.3s; -webkit-transition: all 0.3s; transition: all 0.3s; }
+
+body .ui-inputtext { font-size: 14px; }
+.layout-container .footer .footer-text-right, .footer-text-left { font-size: 13px; color: #84d7c7; }
+.layout-container .footer .card { box-shadow: none; background: #192773; color: #84d7c7; border-radius: 0; }
+.layout-container .topbar-items > li { margin-left: 20px; }
+.body .ui-panel .ui-panel-titlebar { border-radius: 0; }
+.layout-container .ultima-menu.ultima-main-menu { margin-top: 0; }
+.layout-container .ultima-menu li a { padding-right: 1.5em; }
+
+.dashboard .card { box-shadow: 0 5px 15px rgba(39, 40, 44, 0.10); margin-bottom: 0 !important; }
+.brNone { border-right: none !important; }
+.DashComp { border-right: 1px dotted #d6d5d5; padding: 0 30px; }
+
+.DashComp h2 { font-size: 70px; margin: 0; margin-top: 30px; }
+.DashComp h2 span { font-size: 20px; }
+.DashComp p { font-size: 20px; margin: 20px 0; }
+.DashComp ul { text-align: left; padding: 0; }
+
+.DashComp ul li { display: inline-block; width: 100%; max-width: 315px; height: 6px; margin-right: 2px; background-size: contain; }
+
+.DashComp ul.bg1 li { background: #de36dc; background-image: url(assets/layout/images/Serit.png); background-image: url(assets/layout/images/Serit.png), linear-gradient(90deg, #de36dc 62%, #fbd5fa 62%); }
+
+.DashComp ul.bg2 li { background: #008446; background-image: url(assets/layout/images/Serit.png); background-image: url(assets/layout/images/Serit.png), linear-gradient(90deg, #008446 79%, #c1e3d8 79%); }
+
+.DashComp ul.bg3 li { background: #ff9802; background-image: url(assets/layout/images/Serit.png); background-image: url(assets/layout/images/Serit.png), linear-gradient(90deg, #ff9802 93%, #fde9ce 93%); }
+
+.DashComp ul.bg4 li { background: #1a8cf7; background-image: url(assets/layout/images/Serit.png); background-image: url(assets/layout/images/Serit.png), linear-gradient(90deg, #1a8cf7 84%, #c8e6fc 84%); }
+
+
+.DashComp ul li:last-child { margin-right: 0; }
+
+.EpcDashboard .card { box-shadow: 0 5px 25px rgba(39, 40, 44, 0.15); margin-bottom: 0 !important; }
+.Machine-Name { padding: 20px; background: #192773; color: #fff; font-size: 30px; font-weight: bold; margin-bottom: 15px; }
+.Machine-Production h2 { text-align: center; font-size: 35px; }
+.Machine-Production p { text-align: center; font-size: 18px; margin: 40px 0; }
+//.Machine-Production span { text-align: center; font-size: 15px; display: block; white-space:nowrap;}
+.operator { font-size: 100px; color: #d6d5d5; }
+.BtnDurus { position: absolute; top: 0; right: 0; background: #84d7c7 !important; }
+.DurusPanel { position: relative; }
+
+.EpcDashboard .colorbox-1 { background: #fdbc59 !important; }
+.EpcDashboard .colorbox-2 { background: #ec655e !important; }
+.EpcDashboard .colorbox-3 { background: #7e4e9b !important; }
+.EpcDashboard .colorbox-4 { background: #acadaf !important; }
+.EpcDashboard .colorbox.colorbox-1 div:first-child { background: rgba(0, 0, 0, 0.15) !important; }
+.EpcDashboard .colorbox.colorbox-2 div:first-child { background: rgba(0, 0, 0, 0.15) !important; }
+.EpcDashboard .colorbox.colorbox-3 div:first-child { background: rgba(0, 0, 0, 0.15) !important; }
+.EpcDashboard .colorbox.colorbox-4 div:first-child { background: rgba(0, 0, 0, 0.15) !important; }
+.EpcDashboard .PartCode { color: #fff; padding: 12px !important; display: block; font-size: 18px }
+.EpcDashboard .PartName { color: #fff; padding: 12px !important; display: block; font-size: 18px }
+.EpcDashboard .ui-g-12, .ui-md-12 { }
+
+.NoConnection{background:url(assets/layout/images/NoSignal.png) no-repeat center; background-size:contain; }
+
+.gradient { background-image: linear-gradient(to bottom, rgba(255,255,255,1) 30%, rgba(255,0,0,1)); }
+
+@media (max-width: 640px) {
+    .login-panel { text-align: left; width: 300px; min-height: 440px; padding: 40px 20px; margin: 75px auto 0 auto; }
+    .login-panel .ui-g .ui-g-12 { padding: 20px 0px !important; }
+    .login-panel .drklogo { text-align: center; margin-top: 5px; }
+}
+
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .login-body { background: url("assets/layout/images/login/LoginMainBg.jpg") top right no-repeat; background-size: cover; }
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+
+
+main > .container {
+    padding: 35px 0;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+}

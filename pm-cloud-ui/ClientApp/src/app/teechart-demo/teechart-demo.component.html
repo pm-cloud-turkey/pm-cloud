@@ -1,0 +1,20 @@
+<div class="ui-g">
+    <div class="ui-g-12">
+        <div class="p-grid card ">
+            <canvas id="canvas1" #canvas1 style="border: 1px gray solid; float: left" width="900px"
+                    height="500px"></canvas>
+                    <p-dialog header="Title" [(visible)]="display" modal="modal" width="auto" responsive="true">
+                        Shouldn't this dialog window's width be auto? 
+                        It is defaulting to 300px, even though this 
+                        behaviour was changed in issue 1262 (new it 
+                        should default to auto). 
+                        <br>
+                        <strong>My aim is to set the dialog width to 
+                        90% of the screen size.</strong>
+                        <br>
+                        Setting the width to auto (width="auto") does 
+                        not help; setting it to 90% does not help either.
+                    </p-dialog>
+        </div>
+    </div>
+</div>

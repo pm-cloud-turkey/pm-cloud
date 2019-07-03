@@ -1,0 +1,40 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: pm-ui-cloud
+spec:
+    selector:
+        matchLabels:
+            app: pm-ui-cloud
+    replicas: 1
+    template: # template for the pods
+        metadata:
+            labels:
+                app: pm-ui-cloud
+        spec:
+            containers:
+                - name: pm-ui-cloud
+                  image: ${REPOSITORY_TAG}
+                  imagePullPolicy: Never
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: pm-ui-cloud
+
+spec:
+    # This defines which pods are going to be represented by this Service
+    # The service becomes a network endpoint for either other services
+    # or maybe external users to connect to (eg browser)
+    selector:
+        app: pm-ui-cloud
+
+    ports:
+        - name: http
+          port: 80
+          nodePort: 30080
+
+    type: NodePort
+

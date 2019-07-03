@@ -1,0 +1,118 @@
+<div class="p-grid">
+    <div class="p-col-3 card">
+        <p-accordion>
+            <p-accordionTab header="Filtre">
+                <div class="p-grid">
+
+                    <div class="p-col-4">
+                        <label>Makinalar</label>
+                    </div>
+                    <div class="p-col-8">
+                        <p-dropdown [options]="machines" [(ngModel)]="selectedMachine"
+                                    optionLabel="name"></p-dropdown>
+                    </div>
+
+
+                    <div class="p-col-4">
+                        <label>Makina</label>
+                    </div>
+                    <div class="p-col-8">
+                        <p-dropdown [options]="machines" [(ngModel)]="selectedMachine"
+                                    optionLabel="name"></p-dropdown>
+                    </div>
+
+
+                    <div class="p-col-4">
+                        <label>Dönem</label>
+                    </div>
+                    <div class="p-col-8">
+                        <p-dropdown [options]="machines" [(ngModel)]="selectedMachine"
+                                    optionLabel="name"></p-dropdown>
+                    </div>
+
+
+                    <div class="p-col-4">
+                        <label>Başlangıç</label>
+                    </div>
+                    <div class="p-col-8">
+                        <p-calendar dateFormat="mm/dd/yy" showTime="true"></p-calendar>
+                    </div>
+
+
+                    <div class="p-col-4">
+                        <label>Bitiş</label>
+                    </div>
+                    <div class="p-col-8">
+                        <p-calendar dateFormat="mm/dd/yy" showTime="true"></p-calendar>
+                    </div>
+
+                    <div class="p-col-12">
+
+                    </div>
+
+                    <p-panel header="Detaylar">
+
+                        <div class="p-col-12">
+                            <p-checkbox name="groupname" value="val1" label="Çevrim"
+                                        [(ngModel)]="selectedMachine"></p-checkbox>
+                        </div>
+                        <div class="p-col-12">
+                            <p-checkbox name="groupname" value="val2" label="Çevrim Süresi"
+                                        [(ngModel)]="selectedMachine"></p-checkbox>
+                        </div>
+                        <div class="p-col-12">
+                            <p-checkbox name="groupname" value="val2" label="Çevrim/Dakika"
+                                        [(ngModel)]="selectedMachine"></p-checkbox>
+                        </div>
+                        <div class="p-col-12">
+                            <p-checkbox name="groupname" value="val2" label="Çevrim/Saat"
+                                        [(ngModel)]="selectedMachine"></p-checkbox>
+                        </div>
+                        <div class="p-col-12">
+                            <p-checkbox name="groupname" value="val2" label="Hedef Çevrim"
+                                        [(ngModel)]="selectedMachine"></p-checkbox>
+                        </div>
+                        <div class="p-col-12">
+                            <p-checkbox name="groupname" value="val2" label="Duruş"
+                                        [(ngModel)]="selectedMachine"></p-checkbox>
+                        </div>
+                        <div class="p-col-12">
+                            <p-checkbox name="groupname" value="val2" label="Kilit"
+                                        [(ngModel)]="selectedMachine"></p-checkbox>
+                        </div>
+                        <div class="p-col-12">
+                            <p-checkbox name="groupname" value="val2" label="İş"
+                                        [(ngModel)]="selectedMachine"></p-checkbox>
+                        </div>
+                        <div class="p-col-12">
+                            <p-checkbox name="groupname" value="val2" label="Hurda"
+                                        [(ngModel)]="selectedMachine"></p-checkbox>
+                        </div>
+                        <div class="p-col-12">
+                            <p-checkbox name="groupname" value="val2" label="Operatör"
+                                        [(ngModel)]="selectedMachine"></p-checkbox>
+                        </div>
+                        <div class="p-col-12">
+                            <p-checkbox name="groupname" value="val2" label="Teknisyen"
+                                        [(ngModel)]="selectedMachine"></p-checkbox>
+                        </div>
+                        <div class="p-col-12">
+                            <p-checkbox name="groupname" value="val2" label="Yardımcı Operatörler"
+                                        [(ngModel)]="selectedMachine"></p-checkbox>
+                        </div>
+                        <div class="p-col-12">
+                            <p-checkbox name="groupname" value="val2" label="Hız düşümü"
+                                        [(ngModel)]="selectedMachine"></p-checkbox>
+                        </div>
+                    </p-panel>
+                </div>
+
+            </p-accordionTab>
+            <p-accordionTab header="Ayarlar">
+
+            </p-accordionTab>
+
+        </p-accordion>
+    </div>
+    <div class="p-col-9 card">  <app-teechart-demo> </app-teechart-demo></div>
+</div>

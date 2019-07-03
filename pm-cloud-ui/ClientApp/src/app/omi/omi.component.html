@@ -1,0 +1,57 @@
+<div class="ui-g Omi">
+    <div class="ui-g-12 ui-md-4" *ngFor="let data of signalRService.data">
+        <div class="card"
+             [ngStyle]="{'background':data.machine.machineStatus.machineWorkStatus=='No Connection?'?' red ':'linear-gradient(#fff 5%,'+ data.machine.machineStatus.machineWorkStatus +' 95%)' }">
+            <p-panel>
+
+                <p-header>
+                    <span style="font-size: 18px; align-content: center;">{{data.machine.name}}</span>
+                    <div class="Omi-Warnings">
+                        <i *ngIf="data.machine.machineStatus.energyStatus=='NORMAL'"
+                           class="omi-header-icon material-icons"
+                           pTooltip="Enerji Normal">flash_on</i>
+                        <i *ngIf="data.machine.machineStatus.energyStatus=='GREATER_THAN_LEVEL1'"
+                           class="omi-header-icon material-icons" pTooltip="Enerji Seviye 1 Üstü">flash_auto</i>
+                        <i *ngIf="data.machine.machineStatus.energyStatus=='GREATER_THAN_LEVEL2'"
+                           class="omi-header-icon material-icons" pTooltip="Enerji Seviye 2 Üstü">flash_off</i>
+                        <i *ngIf="data.machine.machineStatus.connectionFailed"
+                           class="omi-header-icon material-icons">link_off</i>
+                        <i *ngIf="data.machine.machineStatus.jobMissing" class="omi-header-icon material-icons"
+                           pTooltip="İş Yok">not_interested</i>
+                        <i *ngIf="data.machine.machineStatus.locked" class="omi-header-icon material-icons"
+                           pTooltip="Makina Kilitli">lock</i>
+                        <i *ngIf="data.machine.machineStatus.operatorMissing" class="omi-header-icon material-icons"
+                           pTooltip="Operatör Yok">person_add_disabled</i>
+                        <i *ngIf="data.machine.machineStatus.performanceLowerThanTargetPerformance"
+                           class="omi-header-icon material-icons" pTooltip="Performans">person_add_disabled</i>
+                        <i *ngIf="data.machine.machineStatus.technicianCall" class="omi-header-icon material-icons"
+                           pTooltip="Teknisyen Çağrı">build</i>
+                        <i *ngIf="data.machine.machineStatus.lowSpeed" class="omi-header-icon material-icons"
+                           pTooltip="Düşük Hız">trending_down</i>
+                        <i *ngIf="data.machine.machineStatus.stopTimeAboveThresholdValue"
+                           class="omi-header-icon material-icons" pTooltip="Duruş Hedefi Aşımı">pie_chart</i>
+                    </div>
+
+                </p-header>
+                <div [ngClass]="data.machine.machineStatus.machineWorkStatus=='No Connection'?'NoConnection':''"
+                     class="ui-g omidetail ">
+
+                    <div class="ui-g-12">
+                        <div class="ui-g-6">
+                            <div *ngFor="let parameter of getOmiParameters(data)">
+                                <span style="font-weight:bold;">{{parameter.label}}</span>
+                            </div>
+                        </div>
+                        <div class="ui-g-6">
+                            <div *ngFor="let parameter of getOmiParameters(data)">
+                                <span>: {{parameter.value}}</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </p-panel>
+        </div>
+
+    </div>
+</div>

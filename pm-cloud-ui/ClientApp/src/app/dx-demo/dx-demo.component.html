@@ -1,0 +1,48 @@
+<dx-chart id="chart" palette="vintage" [dataSource]="populationData" (onPointClick)="showDialog()" title="[1.04.2019 .. 1.05.2019][Tüm Makineler]">
+	<dxi-series valueField="number" ></dxi-series>
+	<dxi-series axis="total" type="spline" valueField="total" color="#008fd8">
+	</dxi-series>
+	<dxo-common-series-settings argumentField="value" type="bar">
+	</dxo-common-series-settings>
+	<dxi-value-axis>
+		<dxo-grid [visible]="true"></dxo-grid>
+	</dxi-value-axis>
+	<dxi-value-axis name="total" position="right">
+		<dxo-grid [visible]="true"></dxo-grid>
+		<dxo-title text="Total Population, billions"></dxo-title>
+	</dxi-value-axis>
+	<dxo-legend verticalAlignment="bottom"  [visible]="false" horizontalAlignment="center">
+    </dxo-legend>
+    <dxo-zoom-and-pan
+    valueAxis="both"
+    argumentAxis="both"
+    [dragToZoom]="true"
+    [allowMouseWheel]="true"
+    panKey="shift" 
+></dxo-zoom-and-pan>
+	<dxo-export [enabled]="true"></dxo-export>
+    	<dxo-argument-axis>
+		<dxo-label overlappingBehavior="rotate" [rotationAngle]="90">
+		</dxo-label>
+	</dxo-argument-axis>
+    <dxo-common-series-settings argumentField="value" type="bar" valueField="number" [ignoreEmptyPoints]="true">
+		<dxo-label [visible]="true" [format]="{
+                type: 'fixedPoint',
+                precision: '0'
+            }">
+		</dxo-label>
+    </dxo-common-series-settings>
+
+</dx-chart>
+<p-dialog header="Title" [(visible)]="display" modal="modal" width="auto" responsive="true">
+    Shouldn't this dialog window's width be auto? 
+    It is defaulting to 300px, even though this 
+    behaviour was changed in issue 1262 (new it 
+    should default to auto). 
+    <br>
+    <strong>My aim is to set the dialog width to 
+    90% of the screen size.</strong>
+    <br>
+    Setting the width to auto (width="auto") does 
+    not help; setting it to 90% does not help either.
+</p-dialog>

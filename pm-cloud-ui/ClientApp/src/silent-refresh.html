@@ -1,0 +1,10 @@
+<head>
+    <title></title>
+</head>
+<body>
+<script src="assets/js/oidc-client.min.js"></script>
+<script>
+    new UserManager().signinSilentCallback()
+        .catch(err => console.log(err));
+</script>
+</body>

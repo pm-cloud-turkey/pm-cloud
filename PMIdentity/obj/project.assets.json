@@ -13666,7 +13666,6 @@
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\gurkan.indibay\\RiderProjects\\JenkinsPM\\PMCloud\\pm-cloud\\PMIdentity\\NuGet.Config",
         "C:\\Users\\gurkan.indibay\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

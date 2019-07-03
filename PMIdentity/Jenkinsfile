@@ -6,7 +6,7 @@ pipeline {
      ORGANIZATION_NAME="pm-cloud-turkey"
      // YOUR_DOCKERHUB_USERNAME (it doesn't matter if you don't have one)
 
-     SERVICE_NAME = "pm-ui-cloud"
+     SERVICE_NAME = "pm-service-identity"
      REPOSITORY_TAG="${ORGANIZATION_NAME}-${SERVICE_NAME}:${BUILD_ID}"
    }
 
@@ -25,7 +25,7 @@ pipeline {
 
       stage('Build and Push Image') {
          steps {
-           sh 'docker build --rm --build-arg BUILD_ENV=local --pull -t  ${REPOSITORY_TAG} .'
+           sh 'docker build --rm --pull -t ${REPOSITORY_TAG} .'
          }
       }
 

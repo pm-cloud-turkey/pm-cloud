@@ -31,5 +31,7 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="deploy.yaml" />
+    <Content Include="Jenkinsfile" />
   </ItemGroup>
 </Project>

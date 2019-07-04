@@ -42,7 +42,7 @@ volumes: [
             apk add less
             echo "Repo Tag" ${REPOSITORY_TAG}
             //envsubst '${REPOSITORY_TAG}'< ${WORKSPACE}/PMIdentity/deploy.yaml | kubectl apply -f -
-            envsubst '${REPOSITORY_TAG}'< ${WORKSPACE}/PMIdentity/deploy.yaml | less
+            envsubst '${REPOSITORY_TAG}'< ${WORKSPACE}/PMIdentity/deploy.yaml | less -
                    """
       }
     }

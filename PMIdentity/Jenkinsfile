@@ -15,11 +15,9 @@ volumes: [
  
     stage('Create Docker images') {
       container('docker') {
-        {
-          sh """
+         sh """
             docker build --rm --pull -t ${REPOSITORY_TAG} .
-            """
-        }
+           """
       }
     }
     stage('Run kubectl') {

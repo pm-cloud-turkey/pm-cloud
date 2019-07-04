@@ -16,6 +16,7 @@ volumes: [
     stage('Create Docker images') {
       container('docker') {
          sh """
+            cd PMIdentity
             docker build --rm --pull -t pm-cloud-turkey-pm-service-identity:${BUILD_ID} .
            """
       }

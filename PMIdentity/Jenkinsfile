@@ -42,8 +42,7 @@ volumes: [
             apk add less
             apk add sed
             echo "Repo Tag" ${REPOSITORY_TAG}
-            less ${WORKSPACE}/PMIdentity/deploy.yaml | sed 's/\${REPOSITORY_TAG}/${REPOSITORY_TAG}/' > deploy_temp.yaml
-            less deploy_temp.yaml
+            less ${WORKSPACE}/PMIdentity/deploy.yaml | sed 's/\${REPOSITORY_TAG}/${REPOSITORY_TAG}/' | kubectl apply -f -
                    """
       }
     }

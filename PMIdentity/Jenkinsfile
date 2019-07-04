@@ -1,3 +1,5 @@
+pipeline {
+   agent any
 def label = "worker-${UUID.randomUUID().toString()}"
 
 podTemplate(label: label, containers: [
@@ -10,9 +12,7 @@ volumes: [
   hostPathVolume(mountPath: '/home/gradle/.gradle', hostPath: '/tmp/jenkins/.gradle'),
   hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')
 ]) {
-
- pipeline {
-    agent any   
+  
  
     stage('Create Docker images') {
       container('docker') {
@@ -31,5 +31,6 @@ volumes: [
         sh "helm list"
       }
     }
-  }
+  
+}
 }

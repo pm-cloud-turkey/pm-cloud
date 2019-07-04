@@ -34,7 +34,6 @@ volumes: [
 
     stage('Run kubectl') {
       container('kubectl') {
-        //sh 'envsubst < ${WORKSPACE}/PMIdentity/deploy.yaml | kubectl apply -f -'
 
          sh """
             apk update
@@ -42,7 +41,7 @@ volumes: [
             apk add less
             apk add sed
             echo "Repo Tag" ${REPOSITORY_TAG}
-            less ${WORKSPACE}/PMIdentity/deploy.yaml | sed 's/\${REPOSITORY_TAG}/${REPOSITORY_TAG}/' | kubectl apply -f -
+            less ${WORKSPACE}/pm-cloud-ui/ClientApp/deploy.yaml | sed 's/\${REPOSITORY_TAG}/${REPOSITORY_TAG}/' | kubectl apply -f -
                    """
       }
     }

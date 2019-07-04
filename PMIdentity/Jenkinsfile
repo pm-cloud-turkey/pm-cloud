@@ -16,7 +16,7 @@ volumes: [
     stage('Create Docker images') {
       container('docker') {
          sh """
-            docker build --rm --pull -t ${REPOSITORY_TAG} .
+            docker build --rm --pull -t pm-cloud-turkey-pm-service-identity:${BUILD_ID} .
            """
       }
     }

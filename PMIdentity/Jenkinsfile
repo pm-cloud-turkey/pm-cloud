@@ -1,39 +1,36 @@
-pipeline {
-   agent any
+def label = "worker-${UUID.randomUUID().toString()}"
 
-   environment {
-     // You must set the following environment variables
-     ORGANIZATION_NAME="pm-cloud-turkey"
-     // YOUR_DOCKERHUB_USERNAME (it doesn't matter if you don't have one)
-
-     SERVICE_NAME = "pm-service-identity"
-     REPOSITORY_TAG="${ORGANIZATION_NAME}-${SERVICE_NAME}:${BUILD_ID}"
-   }
-
-   stages {
-      stage('Preparation') {
-         steps {
-            cleanWs()
-            git credentialsId: 'GitHub', url: "https://github.com/${ORGANIZATION_NAME}/pm-cloud.git"
-         }
+podTemplate(label: label, containers: [
+  containerTemplate(name: 'gradle', image: 'gradle:4.5.1-jdk9', command: 'cat', ttyEnabled: true),
+  containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
+  containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.8.8', command: 'cat', ttyEnabled: true),
+  containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:latest', command: 'cat', ttyEnabled: true)
+],
+volumes: [
+  hostPathVolume(mountPath: '/home/gradle/.gradle', hostPath: '/tmp/jenkins/.gradle'),
+  hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')
+]) {
+  node(label) {
+    
+ 
+    stage('Create Docker images') {
+      container('docker') {
+        {
+          sh """
+            docker build --rm --pull -t ${REPOSITORY_TAG} .
+            """
+        }
       }
-      stage('Build') {
-         steps {
-            sh '''echo No build required for Queue'''
-         }
+    }
+    stage('Run kubectl') {
+      container('kubectl') {
+        sh "kubectl get pods"
       }
-
-      stage('Build and Push Image') {
-         steps {
-           sh 'cd PMIdentity'
-           sh 'docker build --rm --pull -t ${REPOSITORY_TAG} .'
-         }
+    }
+    stage('Run helm') {
+      container('helm') {
+        sh "helm list"
       }
-
-      stage('Deploy to Cluster') {
-          steps {
-            sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
-          }
-      }
-   }
+    }
+  }
 }

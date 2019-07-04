@@ -32,6 +32,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="deploy.yaml" />
-    <Content Include="Jenkinsfile" />
+    <Content Include="Jenkinsfile3" />
   </ItemGroup>
 </Project>

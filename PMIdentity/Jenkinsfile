@@ -22,14 +22,16 @@ volumes: [
      def shortGitCommit = "${gitCommit[0..10]}"
      def previousGitCommit = sh(script: "git rev-parse ${gitCommit}~", returnStdout: true)
  
-    stage('Create Docker images') {
-      container('docker') {
-         sh """
-            cd PMIdentity
-            docker build --rm --pull -t ${REPOSITORY_TAG} .
-           """
-      }
-    }
+    //stage('Create Docker images') {
+     // container('docker') {
+      //   sh """
+       //     cd PMIdentity
+       //     docker build --rm --pull -t ${REPOSITORY_TAG} .
+        //   """
+     // }
+    //}
+    
+    
     stage('Run kubectl') {
       container('kubectl') {
         //sh 'envsubst < ${WORKSPACE}/PMIdentity/deploy.yaml | kubectl apply -f -'
@@ -37,8 +39,10 @@ volumes: [
          sh """
             apk update
             apk add gettext
+            apk add cat
             echo "Repo Tag" ${REPOSITORY_TAG}
-            envsubst '${REPOSITORY_TAG}'< ${WORKSPACE}/PMIdentity/deploy.yaml | kubectl apply -f -
+            //envsubst '${REPOSITORY_TAG}'< ${WORKSPACE}/PMIdentity/deploy.yaml | kubectl apply -f -
+            envsubst '${REPOSITORY_TAG}'< ${WORKSPACE}/PMIdentity/deploy.yaml | cat
                    """
       }
     }

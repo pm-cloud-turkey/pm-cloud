@@ -38,7 +38,7 @@ volumes: [
             apk update
             apk add gettext
             echo "Repo Tag" ${REPOSITORY_TAG}
-            envsubst < ${WORKSPACE}/PMIdentity/deploy.yaml | kubectl apply -f -
+            envsubst '${REPOSITORY_TAG}'< ${WORKSPACE}/PMIdentity/deploy.yaml | kubectl apply -f -
                    """
       }
     }

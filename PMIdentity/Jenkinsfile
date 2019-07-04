@@ -35,7 +35,7 @@ volumes: [
         //sh 'envsubst < ${WORKSPACE}/PMIdentity/deploy.yaml | kubectl apply -f -'
         
          sh """
-            apt-get install gettext-base
+            apk add gettext
             envsubst < ${WORKSPACE}/PMIdentity/deploy.yaml | kubectl apply -f -
                    """
       }

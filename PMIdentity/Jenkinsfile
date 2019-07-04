@@ -32,7 +32,12 @@ volumes: [
     }
     stage('Run kubectl') {
       container('kubectl') {
-        sh 'envsubst < ${WORKSPACE}/PMIdentity/deploy.yaml | kubectl apply -f -'
+        //sh 'envsubst < ${WORKSPACE}/PMIdentity/deploy.yaml | kubectl apply -f -'
+        
+         sh """
+            apt-get install gettext-base
+            envsubst < ${WORKSPACE}/PMIdentity/deploy.yaml | kubectl apply -f -
+                   """
       }
     }
     stage('Run helm') {

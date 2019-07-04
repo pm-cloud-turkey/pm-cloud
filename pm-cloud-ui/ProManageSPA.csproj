@@ -22,7 +22,7 @@
         <Content Remove="$(SpaRoot)**" />
         <Content Include="ClientApp\deploy.yaml" />
         <Content Include="ClientApp\Dockerfile" />
-        <Content Include="ClientApp\Jenkinsfile" />
+        <Content Include="ClientApp\Jenkinsfile2" />
         <Content Include="ClientApp\src\app\account\login\login.component.html" />
         <Content Include="ClientApp\src\app\account\login\login.component.scss" />
         <Content Include="ClientApp\src\app\account\register\register.component.html" />
@@ -78,6 +78,7 @@
         <None Include="ClientApp\environmentConf\environment-local.ts" />
         <None Include="ClientApp\environmentConf\environment-test.ts" />
         <None Include="ClientApp\environmentConf\environment.ts" />
+        <None Include="ClientApp\Jenkinsfile" />
         <None Include="ClientApp\src\app\common\service\signal-r.service.spec.ts" />
         <None Include="ClientApp\src\app\common\service\signal-r.service.ts" />
     </ItemGroup>

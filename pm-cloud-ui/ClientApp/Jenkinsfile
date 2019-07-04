@@ -1,38 +1,51 @@
-pipeline {
-   agent any
-
-   environment {
-     // You must set the following environment variables
-     ORGANIZATION_NAME="pm-cloud-turkey"
+def label = "worker-${UUID.randomUUID().toString()}"
+def ORGANIZATION_NAME="pm-cloud-turkey"
      // YOUR_DOCKERHUB_USERNAME (it doesn't matter if you don't have one)
 
-     SERVICE_NAME = "pm-ui-cloud"
-     REPOSITORY_TAG="${ORGANIZATION_NAME}-${SERVICE_NAME}:${BUILD_ID}"
-   }
+def  SERVICE_NAME = "pm-ui-cloud"
+def  REPOSITORY_TAG="${ORGANIZATION_NAME}-${SERVICE_NAME}:${BUILD_ID}"
 
-   stages {
-      stage('Preparation') {
-         steps {
-            cleanWs()
-            git credentialsId: 'GitHub', url: "https://github.com/${ORGANIZATION_NAME}/${SERVICE_NAME}"
-         }
-      }
-      stage('Build') {
-         steps {
-            sh '''echo No build required for Queue'''
-         }
-      }
+podTemplate(label: label, containers: [
+  //containerTemplate(name: 'gradle', image: 'gradle:4.5.1-jdk9', command: 'cat', ttyEnabled: true),
+  containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true,envVars: [envVar(key:'REPOSITORY_TAG', value:'${REPOSITORY_TAG}')]),
+  containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.8.8', command: 'cat', ttyEnabled: true,envVars: [envVar(key:'REPOSITORY_TAG', value:'${REPOSITORY_TAG}')]),
+  //containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:latest', command: 'cat', ttyEnabled: true)
+],
+volumes: [
+  hostPathVolume(mountPath: '/home/gradle/.gradle', hostPath: '/tmp/jenkins/.gradle'),
+  hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')
+]) {
+  node(label) {
+     def myRepo = checkout scm
+     def gitCommit = myRepo.GIT_COMMIT
+     def gitBranch = myRepo.GIT_BRANCH
+     def shortGitCommit = "${gitCommit[0..10]}"
+     def previousGitCommit = sh(script: "git rev-parse ${gitCommit}~", returnStdout: true)
 
-      stage('Build and Push Image') {
-         steps {
-           sh 'docker build --rm --build-arg BUILD_ENV=local --pull -t  ${REPOSITORY_TAG} .'
-         }
+    stage('Create Docker images') {
+     container('docker') {
+         sh """
+            cd pm-cloud-ui/ClientApp
+            docker build --rm --build-arg BUILD_ENV=local --pull -t  ${REPOSITORY_TAG} .
+           """
       }
+    }
 
-      stage('Deploy to Cluster') {
-          steps {
-            sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
-          }
+
+    stage('Run kubectl') {
+      container('kubectl') {
+        //sh 'envsubst < ${WORKSPACE}/PMIdentity/deploy.yaml | kubectl apply -f -'
+
+         sh """
+            apk update
+            apk add gettext
+            apk add less
+            apk add sed
+            echo "Repo Tag" ${REPOSITORY_TAG}
+            less ${WORKSPACE}/PMIdentity/deploy.yaml | sed 's/\${REPOSITORY_TAG}/${REPOSITORY_TAG}/' | kubectl apply -f -
+                   """
       }
-   }
+    }
+
+  }
 }

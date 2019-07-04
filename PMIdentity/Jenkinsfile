@@ -11,7 +11,8 @@ volumes: [
   hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')
 ]) {
 
-    
+ pipeline {
+    agent any   
  
     stage('Create Docker images') {
       container('docker') {
@@ -30,4 +31,5 @@ volumes: [
         sh "helm list"
       }
     }
+  }
 }

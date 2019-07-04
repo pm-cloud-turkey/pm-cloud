@@ -22,14 +22,14 @@ volumes: [
      def shortGitCommit = "${gitCommit[0..10]}"
      def previousGitCommit = sh(script: "git rev-parse ${gitCommit}~", returnStdout: true)
  
-    //stage('Create Docker images') {
-     // container('docker') {
-      //   sh """
-       //     cd PMIdentity
-       //     docker build --rm --pull -t ${REPOSITORY_TAG} .
-        //   """
-     // }
-    //}
+    stage('Create Docker images') {
+     container('docker') {
+         sh """
+            cd PMIdentity
+            docker build --rm --pull -t ${REPOSITORY_TAG} .
+           """
+      }
+    }
     
     
     stage('Run kubectl') {

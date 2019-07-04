@@ -13,7 +13,7 @@ volumes: [
   hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')
 ]) {
   
- 
+ stages{
     stage('Create Docker images') {
       container('docker') {
          sh """
@@ -31,6 +31,6 @@ volumes: [
         sh "helm list"
       }
     }
-  
+  }
 }
 }

@@ -40,9 +40,9 @@ volumes: [
             apk update
             apk add gettext
             apk add less
+            apk add sed
             echo "Repo Tag" ${REPOSITORY_TAG}
-            
-            envsubst '\${REPOSITORY_TAG}'< ${WORKSPACE}/PMIdentity/deploy.yaml | less 
+            sed 's/\${REPOSITORY_TAG}/${REPOSITORY_TAG}/' | less
                    """
       }
     }

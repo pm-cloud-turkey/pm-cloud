@@ -1,4 +1,23 @@
 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: pm-service-identity
+spec:
+    selector:
+        matchLabels:
+            app: pm-service-identity
+    replicas: 1
+    template: # template for the pods
+        metadata:
+            labels:
+                app: pm-service-identity
+        spec:
+            containers:
+                - name: pm-service-identity
+                  image: ${REPOSITORY_TAG}
+                  imagePullPolicy: Never
+---
 
 apiVersion: v1
 kind: Service

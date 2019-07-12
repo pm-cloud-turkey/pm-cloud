@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oracle
+spec:
+  selector:
+    matchLabels:
+      app: oracle
+  replicas: 1
+  template: # template for the pods
+    metadata:
+      labels:
+        app: oracle
+    spec:
+      containers:
+        - name: oracle
+          image: store/oracle/database-enterprise:12.2.0.1-slim
+          imagePullPolicy: Never
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: oracle-service
+
+spec:
+  # This defines which pods are going to be represented by this Service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to (eg browser)
+  selector:
+    app: oracle-service
+  ports:
+    - name: http
+      port: 32769
+      nodePort: 32767
+    - name: other
+      port: 32768
+      nodePort: 32766
+      
+  type: NodePort
+---
+

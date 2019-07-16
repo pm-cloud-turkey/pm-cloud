@@ -66,8 +66,8 @@ spec:
     -
       name: "oracle"
       protocol: "TCP"
-      port: 32769
-      targetPort: 32769
+      port: 80
+      targetPort: 80
 ---
 kind: "Endpoints"
 apiVersion: "v1"
@@ -80,6 +80,6 @@ subsets:
         ip: "10.1.7.154" #The IP Address of the external web server
     ports:
       -
-        port: 32769
+        port: 80
         name: "oracle"
 

@@ -34,7 +34,8 @@ spec:
     ports:
         - name: http
           port: 80
-          nodePort: 30082
+          protocol: TCP
+          targetPort: 30082
 
     type: LoadBalancer
 ---

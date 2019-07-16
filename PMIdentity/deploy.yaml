@@ -47,7 +47,7 @@ metadata:
 spec:
     containers:
         - name: busybox
-          image: busybox:1.28
+          image: busybox:latest
           command:
               - sleep
               - "3600"

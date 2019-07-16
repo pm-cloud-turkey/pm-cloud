@@ -72,7 +72,7 @@ spec:
 kind: "Endpoints"
 apiVersion: "v1"
 metadata:
-  name: "oracle"
+  name: "oracle-service"
 subsets:
   -
     addresses:

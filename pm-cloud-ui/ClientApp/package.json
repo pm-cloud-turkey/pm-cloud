@@ -37,7 +37,7 @@
         "devextreme-angular": "^18.2",
         "dhtmlx-gantt": "^6.0.7",
         "dhtmlx-scheduler": "^5.1.6",
-        "fullcalendar": "4.0.0-alpha.2",
+        "fullcalendar": "6.0.2",
         "highcharts": "7.0.3",
         "highcharts-angular": "^2.4.0",
         "intl": "1.2.5",
